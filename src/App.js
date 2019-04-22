@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import LoadingIndicator from './Components/LoadingIndicator/LoadingIndicator';
+import LoadingIndicator from './Components/LoadingIndicator/LoadingIndicator.js';
 
 class App extends Component {
+  state = {
+    isLoading: true,
+  };
+
+  componentDidMount() {
+    this._timer = setTimeout(
+      () => this.setState({ isLoading: false }),
+      3000
+    );
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this._timer);
+  }
+
   render() {
     return (
       <div className="App">
-         <LoadingIndicator isLoading={true}>
-          <div>ahoy!</div>
-        </LoadingIndicator>
         <header className="App-header">
-         App
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React</h1>
+          <div style={{ backgroundColor: 'white',  color: 'blue'  }}>
+            <pre>isLoading: {String(this.state.isLoading)}</pre>
+            <LoadingIndicator isLoading={this.state.isLoading}>
+              <div>ahoy!</div>
+            </LoadingIndicator>
+          </div>
         </header>
-       
       </div>
     );
   }

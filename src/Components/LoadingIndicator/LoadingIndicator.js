@@ -1,5 +1,5 @@
-import { React,Component} from 'react'
-import { PropTypes } from 'prop-types'
+import  React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 
 class LoadingIndicator extends Component {
     static propTypes={
@@ -17,14 +17,14 @@ class LoadingIndicator extends Component {
     }
 
     render() {
-        if(this.props.isLoading){
-            if(!this.state.isPastDelay){
-                return null;
-            }
-            return <div>loading...</div>;
+        if (this.props.isLoading) {
+          if (!this.state.isPastDelay) {
+            return null;
+          }
+          return <div>loading...</div>;
         }
         return this.props.children;
-    };
+      }
 };
 
 export default LoadingIndicator;

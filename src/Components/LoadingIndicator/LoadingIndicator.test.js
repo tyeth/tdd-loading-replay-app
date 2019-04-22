@@ -38,7 +38,7 @@ describe('LoadingIndicator', () => {
             </LoadingIndicator>
           );
           jest.runAllTimers();
-          expect(wrapper.html()).toBe(<div>loading...</div>);
+          expect(wrapper.html()).toBe('<div>loading...</div>');
           wrapper.unmount();
         });
       });

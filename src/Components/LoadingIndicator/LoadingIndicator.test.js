@@ -29,6 +29,7 @@ describe('LoadingIndicator', () => {
           wrapper.unmount();
         })
       });
+
       describe('given 200ms have elapsed',()=>{
         it('should render the loading indicator',()=>{
           jest.useFakeTimers();
@@ -37,6 +38,13 @@ describe('LoadingIndicator', () => {
               <div>ahoy!</div>
             </LoadingIndicator>
           );
+
+          // assert that setTimeout was called exactly once.
+          expect(setTimeout.mock.calls.length).toEqual(1);
+
+          // assert that the 2nd argument to the call to setTimeout is 200
+          expect(setTimeout.mock.calls[0][1]).toEqual(200);
+
           jest.runAllTimers();
           expect(wrapper.html()).toBe('<div>loading...</div>');
           wrapper.unmount();

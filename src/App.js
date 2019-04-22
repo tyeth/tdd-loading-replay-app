@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import LoadingIndicator from './Components/LoadingIndicator/LoadingIndicator.js';
-
+import Loading from './Components/Loading/Loading.js'
 class App extends Component {
   state = {
     isLoading: true,
   };
 
+  props = {
+    resetTimerPaused:false,
+  }
+
   componentDidMount() {
-    this._timer = setTimeout(
-      () => this.setState({ isLoading: false }),
-      3000
-    );
+    if(!this.props.resetTimerPaused){
+      this._timer = setTimeout(
+        () => this.setState({ isLoading: false }),
+        3000
+      );
+    }
   }
 
   componentWillUnmount() {
@@ -30,6 +36,7 @@ class App extends Component {
             <LoadingIndicator isLoading={this.state.isLoading}>
               <div>ahoy!</div>
             </LoadingIndicator>
+            {/* <Loading isLoading={true}><div>classy</div></Loading> */}
           </div>
         </header>
       </div>

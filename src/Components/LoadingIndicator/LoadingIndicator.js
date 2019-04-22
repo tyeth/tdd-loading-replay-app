@@ -13,7 +13,7 @@ class LoadingIndicator extends Component {
     componentDidMount(){
       this._delayTimer = setTimeout( () => 
         this.setState({isPastDelay:true})
-      , 200);
+      , 1000);
     }
 
     componentWillUnmount(){

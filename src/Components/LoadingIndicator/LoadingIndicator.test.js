@@ -54,6 +54,10 @@ describe('LoadingIndicator', () => {
       describe('on unmount',()=>{
         it('should clear timeout',()=>{
           jest.useFakeTimers();
+
+          const stubHandle = 12345;
+          setTimeout.mockReturnValue(stubHandle);
+
           const wrapper = mount(
             <LoadingIndicator isLoading={true}>
               <div>ahoy!</div>
@@ -62,6 +66,7 @@ describe('LoadingIndicator', () => {
 
           wrapper.unmount();
           expect(clearTimeout.mock.calls.length).toEqual(1);
+          expect(clearTimeout.mock.calls[0][0]).toEqual(stubHandle);
         });
       });
     });

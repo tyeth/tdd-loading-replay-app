@@ -11,20 +11,24 @@ class LoadingIndicator extends Component {
     };
 
     componentDidMount(){
-        this._delayTimer = setTimeout(
-          ()=>  this.setState({isPastDelay:true})
-        , 200);
+      this._delayTimer = setTimeout( () => 
+        this.setState({isPastDelay:true})
+      , 200);
+    }
+
+    componentWillUnmount(){
+      clearTimeout(this._delayTimer);
     }
 
     render() {
-        if (this.props.isLoading) {
-          if (!this.state.isPastDelay) {
-            return null;
-          }
-          return <div>loading...</div>;
+      if (this.props.isLoading) {
+        if (!this.state.isPastDelay) {
+          return null;
         }
-        return this.props.children;
+        return <div>loading...</div>;
       }
+      return this.props.children;
+    }
 };
 
 export default LoadingIndicator;

@@ -50,5 +50,19 @@ describe('LoadingIndicator', () => {
           wrapper.unmount();
         });
       });
+
+      describe('on unmount',()=>{
+        it('should clear timeout',()=>{
+          jest.useFakeTimers();
+          const wrapper = mount(
+            <LoadingIndicator isLoading={true}>
+              <div>ahoy!</div>
+            </LoadingIndicator>
+          );
+
+          wrapper.unmount();
+          expect(clearTimeout.mock.calls.length).toEqual(1);
+        });
+      });
     });
   });

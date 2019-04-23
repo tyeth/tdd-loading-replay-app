@@ -37,6 +37,7 @@ class App extends Component {
               <div>ahoy!</div>
             </LoadingIndicator>
             {/* <Loading isLoading={true}><div>classy</div></Loading> */}
+            <div class="c-history hidden"></div>
           </div>
         </header>
       </div>
